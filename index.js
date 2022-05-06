@@ -7,7 +7,7 @@ submit.addEventListener("submit", (e) => {
 
   const img = document.createElement("img");
   img.src = "https://www.kino-teatr.ru/acter/album/50064/34947.jpg";
-  img.alt = "Сргсл Norris";
+  img.alt = "Chuck Norris";
   img.classList.add("img");
 
   const textInfo = document.createElement("p");
@@ -19,7 +19,11 @@ submit.addEventListener("submit", (e) => {
 });
 
 const process = async (value) => {
+  try {
   const res = await fetch("https://api.chucknorris.io/jokes/random");
   const type = await res.json();
   value.textContent = type.value;
+  } catch (err) {
+    console.log(err);
+  }
 };
